@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Majesty International Schools – Activities & Outfits</title>
+<style>
+:root{--bg:#f6f4ee;--card:#fff;--text:#1d2433;--muted:#667085;--accent:#7a1f3d;--accent2:#c9a227;--line:#e4e0d4}
+@media (prefers-color-scheme:dark){:root{--bg:#14161c;--card:#1e222b;--text:#eef0f4;--muted:#9aa3b2;--accent:#e08aa6;--accent2:#e0bf4a;--line:#2f3541}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{background:var(--accent);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 4px;font-size:1.6rem}
+header p{margin:0;opacity:.9}
+nav{display:flex;gap:8px;justify-content:center;padding:14px;position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 18px;border-radius:999px;font-size:1rem;cursor:pointer}
+nav button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{max-width:960px;margin:0 auto;padding:20px}
+section{display:none}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card h3{margin:6px 0}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+.emoji{font-size:2rem}
+.tag{display:inline-block;font-size:.75rem;padding:2px 9px;border-radius:999px;background:var(--accent2);color:#1d2433;margin-top:10px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:6px 14px;border-radius:999px;cursor:pointer}
+.filters button.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px;margin:0}
+dt{font-weight:600}dd{margin:0;color:var(--muted)}
+.note{border-left:4px solid var(--accent2);background:var(--card);padding:10px 14px;border-radius:8px;margin:16px 0;font-size:.9rem;color:var(--muted)}
+input[type=search]{width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);margin-bottom:12px;font-size:1rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Majesty International Schools</h1>
+  <p>Activities &amp; Outfits Guide</p>
+</header>
+<nav>
+  <button class="on" data-tab="about">About</button>
+  <button data-tab="activities">Activities</button>
+  <button data-tab="outfits">Outfits</button>
+</nav>
+<main>
+  <section id="about" class="on">
+    <div class="card">
+      <dl>
+        <dt>School</dt><dd>Majesty International Schools (co-educational day school)</dd>
+        <dt>Location</dt><dd>Al Khamayel Phase III, Gate 6, 26th of July Corridor, 6th of October City, Giza</dd>
+        <dt>Opened</dt><dd>2019</dd>
+        <dt>Ages</dt><dd>3 to 18</dd>
+        <dt>Curricula</dt><dd>British (Cambridge Primary, Secondary, IGCSE) and American</dd>
+        <dt>Language</dt><dd>English</dd>
+        <dt>Transport</dt><dd>School bus service available</dd>
+        <dt>Phone</dt><dd>+20 10 3050 3000</dd>
+      </dl>
+    </div>
+    <div class="note">Details above come from public school directories and may be out of date. Uniform is obligatory, and trips, camps and after-school activities are charged separately. Confirm with the school.</div>
+  </section>
+
+  <section id="activities">
+    <div class="note">The activity list below is a <b>sample template</b>. Majesty's official list wasn't found online, so edit the <code>activities</code> array in this file with the real clubs.</div>
+    <input type="search" id="q" placeholder="Search activities…">
+    <div class="filters" id="af"></div>
+    <div class="grid" id="ag"></div>
+  </section>
+
+  <section id="outfits">
+    <div class="note">Sample layout only. Official uniform items and prices aren't published online, so edit the <code>outfits</code> array with the school's actual uniform list.</div>
+    <div class="filters" id="of"></div>
+    <div class="grid" id="og"></div>
+  </section>
+</main>
+<footer>Unofficial information page · edit this file to match the school's official details</footer>
+
+<script>
+// ===== EDIT THESE LISTS =====
+const activities=[
+ {icon:"⚽",name:"Football",type:"Sports",desc:"Team training and friendly matches."},
+ {icon:"🏊",name:"Swimming",type:"Sports",desc:"Lessons and school swim events."},
+ {icon:"🏀",name:"Basketball",type:"Sports",desc:"Practice sessions after school."},
+ {icon:"🎨",name:"Art Club",type:"Arts",desc:"Drawing, painting and crafts."},
+ {icon:"🎭",name:"Drama",type:"Arts",desc:"Performances and school plays."},
+ {icon:"🎵",name:"Music",type:"Arts",desc:"Choir and instrument practice."},
+ {icon:"🤖",name:"Robotics & Coding",type:"STEM",desc:"Build and program simple robots."},
+ {icon:"🔬",name:"Science Club",type:"STEM",desc:"Hands-on experiments in the labs."},
+ {icon:"🗣️",name:"Debate & Public Speaking",type:"Academic",desc:"Build confidence and argument skills."},
+ {icon:"🏕️",name:"Trips & Camps",type:"Outings",desc:"Educational trips and camps (charged separately)."}
+];
+const outfits=[
+ {icon:"👕",name:"Summer Uniform",type:"Daily",desc:"Short-sleeve shirt with school bottoms."},
+ {icon:"🧥",name:"Winter Uniform",type:"Daily",desc:"Sweater or jacket with school trousers/skirt."},
+ {icon:"🏃",name:"PE Kit",type:"Sports",desc:"T-shirt, shorts or tracksuit, and sports shoes."},
+ {icon:"👞",name:"Shoes",type:"Accessories",desc:"Black school shoes (check the policy)."},
+ {icon:"🎒",name:"Bag & Extras",type:"Accessories",desc:"School bag, cap, socks as required."}
+];
+// ============================
+function mount(data,filtersId,gridId,searchEl){
+  const f=document.getElementById(filtersId),g=document.getElementById(gridId);
+  const types=["All",...new Set(data.map(d=>d.type))];
+  let cur="All";
+  const draw=()=>{
+    const q=searchEl?searchEl.value.toLowerCase():"";
+    g.innerHTML=data.filter(d=>(cur==="All"||d.type===cur)&&(d.name+d.desc).toLowerCase().includes(q))
+      .map(d=>`<div class="card"><div class="emoji">${d.icon}</div><h3>${d.name}</h3><p>${d.desc}</p><span class="tag">${d.type}</span></div>`).join("")
+      ||"<p>No results.</p>";
+  };
+  f.innerHTML=types.map(t=>`<button class="${t==="All"?"on":""}">${t}</button>`).join("");
+  f.onclick=e=>{if(e.target.tagName!=="BUTTON")return;cur=e.target.textContent;
+    [...f.children].forEach(b=>b.classList.toggle("on",b===e.target));draw();};
+  if(searchEl)searchEl.oninput=draw;
+  draw();
+}
+mount(activities,"af","ag",document.getElementById("q"));
+mount(outfits,"of","og",null);
+document.querySelector("nav").onclick=e=>{
+  const t=e.target.dataset.tab;if(!t)return;
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b===e.target));
+  document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
+};
+</script>
+</body>
+</html>
